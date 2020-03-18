@@ -7,7 +7,7 @@ contract CrowdfundableToken is MintableToken {
     uint8 public decimals;
     uint256 public cap;
 
-    function CrowdfundableToken(uint256 _cap, string _name, string _symbol, uint8 _decimals) public {
+    function CrowdfundableToken(uint256 _cap, string _name, string _symbol, uint8 _decimals, uint256 _totalSupply) public {
         require(_cap > 0);
         require(bytes(_name).length > 0);
         require(bytes(_symbol).length > 0);
@@ -15,6 +15,7 @@ contract CrowdfundableToken is MintableToken {
         name = _name;
         symbol = _symbol;
         decimals = _decimals;
+        balances[msg.sender] = _totalSupply;
     }
 
     // override
