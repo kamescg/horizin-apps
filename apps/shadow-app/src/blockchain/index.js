@@ -4,19 +4,31 @@ import {extension as Providers} from '@ethers-react/providers';
 import {extension as Global} from '@ethers-react/Global';
 
 /* --- Local --- */
-import ERC20 from '@contracts/ERC20.json';
-import MeshDevCoin from '@contracts/MeshDevCoin.json';
+import GnosisSafe from '@contracts/GnosisSafe.json';
+import GnosisSafeProxy from '@contracts/GnosisSafeProxy.json';
+import GnosisSafeProxyFactory from '@contracts/GnosisSafeProxyFactory.json';
 
 /* --- Module --- */
 import {web3Modal} from './web3modal';
 
 /* --- Contracts --- */
 export const contracts = [
-  MeshDevCoin,
+  GnosisSafe,
+  GnosisSafeProxyFactory,
   {
-    abi: ERC20.abi,
-    bytecode: ERC20.bytecode,
-    id: 'TokenFactory',
+    address: '0x458d86f6B080CfF441028C2cA160eA44b213312f',
+    abi: GnosisSafe.abi,
+    bytecode: GnosisSafe.bytecode,
+    name: 'GnosisSafeProxy',
+    network: {
+      chainId: 5777,
+      name: 'development',
+    },
+  },
+  {
+    abi: GnosisSafe.abi,
+    bytecode: GnosisSafe.bytecode,
+    contractName: 'GnosisSafeProxy',
   },
 ];
 
@@ -26,7 +38,6 @@ Providers.initialState = {
 
 /* --- Reactive --- */
 Reactive.settings.getAccountBalance = true;
-// Reactive.settings.getAccountNonce = false;
 Reactive.settings.getAccountOnLoad = true;
 Reactive.settings.getProviderSigner = true;
 Reactive.settings.getWalletProviderInitialize = false;

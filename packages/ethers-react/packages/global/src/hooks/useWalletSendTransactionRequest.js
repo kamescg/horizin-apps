@@ -15,7 +15,6 @@ import {
 
 /* --- Effect --- */
 export const useWalletSendTransactionRequest = (state, dispatch) => {
-  console.log(state, "state.requests");
   useEffect(() => {
     if (
       state.wallet &&

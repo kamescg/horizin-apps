@@ -19,14 +19,14 @@ export const TokenTransfer = ({ contractName, ...props }) => {
       contractName,
       func: "transfer",
       inputs: [values.address, values.amount],
-      params: {}
+      params: {
+        value: "0x01"
+      }
     });
   };
 
   /* --- Error : Effect --- */
-  useEffect(() => {
-    console.log(contractTransaction, "contractTransaction TokenTransfer");
-  }, [contractTransaction]);
+  useEffect(() => {}, [contractTransaction]);
 
   /* --- TokenTransfer : Form : Compoent --- */
   return (

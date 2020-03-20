@@ -16,6 +16,7 @@
     "packages": [
       "apps/*",
       "packages/*",
+      "packages/bank-safe/packages/*",
       "packages/ethers-react/packages/*",
       "packages/horizin/*"
     ],

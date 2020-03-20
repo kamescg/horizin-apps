@@ -1,3 +1,4 @@
+export { useSelectContract } from "./useSelectContract";
 export { useSelectContractByAddress } from "./useSelectContractByAddress";
 export { useSelectContractByName } from "./useSelectContractByName";
 export { useSelectContractList } from "./useSelectContractList";

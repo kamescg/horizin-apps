@@ -36,30 +36,6 @@ export const ContractDeployed = props => {
         {helpers.shortenTransactionHash(props.transactionHash, 10) ||
           "Unavailable"}
       </Span>
-      <Heading mt3 mb0>
-        Transation Data
-      </Heading>
-      <HorizontalRule sx={{ my: 2 }} />
-      {transactionHook.transactionData && (
-        <Box>
-          <Span mb2 block>
-            <strong>Block:</strong>{" "}
-            {transactionHook.transactionData.blockNumber}
-          </Span>
-          <Span mb2 block>
-            <strong>BlockHash:</strong>{" "}
-            {helpers.shortenBlockHash(
-              transactionHook.transactionData.blockHash,
-              15,
-              false
-            )}
-          </Span>
-          <Span mb2 block>
-            <strong>Created By:</strong>{" "}
-            {helpers.shortenAddress(transactionHook.transactionData.from, 7)}
-          </Span>
-        </Box>
-      )}
     </Flex>
   );
 };

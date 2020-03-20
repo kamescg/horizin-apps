@@ -1,0 +1,232 @@
+{
+  "contractName": "IKyberOasisReserve",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "otc",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.14+commit.01f1aaa4\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"otc\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IKyberOasisReserve.sol\":\"IKyberOasisReserve\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IKyberOasisReserve.sol\":{\"keccak256\":\"0xdcffa34d841da50b38cccdeca4274ef163571b0bbc2fad0e6f608a573b656c54\",\"urls\":[\"bzz-raw://8eab18e796dccade46a3c156113bb57c9f8afa723dabc715c1e8d5a9b09e61a5\",\"dweb:/ipfs/QmcCNM7SRgymZo2i7ZEsEeSkdF8dRSUuq9X4dRdjC8TdkU\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\n\ninterface IKyberOasisReserve {\n    function otc() external view returns(address);\n}\n",
+  "sourcePath": "/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IKyberOasisReserve.sol",
+  "ast": {
+    "absolutePath": "/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IKyberOasisReserve.sol",
+    "exportedSymbols": {
+      "IKyberOasisReserve": [
+        3663
+      ]
+    },
+    "id": 3664,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3657,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:14"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 3663,
+        "linearizedBaseContracts": [
+          3663
+        ],
+        "name": "IKyberOasisReserve",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3662,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "otc",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3658,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "73:2:14"
+            },
+            "returnParameters": {
+              "id": 3661,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3660,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3662,
+                  "src": "98:7:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3659,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "98:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "97:9:14"
+            },
+            "scope": 3663,
+            "src": "61:46:14",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3664,
+        "src": "26:83:14"
+      }
+    ],
+    "src": "0:110:14"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IKyberOasisReserve.sol",
+    "exportedSymbols": {
+      "IKyberOasisReserve": [
+        3663
+      ]
+    },
+    "id": 3664,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3657,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:14"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 3663,
+        "linearizedBaseContracts": [
+          3663
+        ],
+        "name": "IKyberOasisReserve",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3662,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "otc",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3658,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "73:2:14"
+            },
+            "returnParameters": {
+              "id": 3661,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3660,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3662,
+                  "src": "98:7:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3659,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "98:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "97:9:14"
+            },
+            "scope": 3663,
+            "src": "61:46:14",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3664,
+        "src": "26:83:14"
+      }
+    ],
+    "src": "0:110:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.14+commit.01f1aaa4.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-03-18T17:53:20.878Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

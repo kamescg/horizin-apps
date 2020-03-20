@@ -39,6 +39,10 @@ const RegionAside = ({sx, ...props}) => {
               to: '/bank',
             },
             {
+              label: 'Safes',
+              to: '/safes',
+            },
+            {
               label: 'Contracts',
               to: '/contracts',
             },

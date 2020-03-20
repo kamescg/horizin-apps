@@ -1,0 +1,399 @@
+{
+  "contractName": "IBancorNetworkPathFinder",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "sourceToken",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IERC20",
+          "name": "targetToken",
+          "type": "address"
+        }
+      ],
+      "name": "generatePath",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.14+commit.01f1aaa4\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"contract IERC20\",\"name\":\"sourceToken\",\"type\":\"address\"},{\"internalType\":\"contract IERC20\",\"name\":\"targetToken\",\"type\":\"address\"}],\"name\":\"generatePath\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IBancorNetworkPathFinder.sol\":\"IBancorNetworkPathFinder\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IBancorNetworkPathFinder.sol\":{\"keccak256\":\"0x6eb4612d718a29290de3acbd0396c6f20529c4485f5503bcb7593ee395649901\",\"urls\":[\"bzz-raw://7574f305e841b7b04b35025e91034e01e8a957dde497c5732683e9d5ec6642a2\",\"dweb:/ipfs/QmfVPUkfsBxdeE6ZEibafRBCagTMH6Pv2jhYJHAPVRLM1L\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xe5bb0f57cff3e299f360052ba50f1ea0fff046df2be070b6943e0e3c3fdad8a9\",\"urls\":[\"bzz-raw://59fd025151435da35faa8093a5c7a17de02de9d08ad27275c5cdf05050820d91\",\"dweb:/ipfs/QmQMvwEcPhoRXzbXyrdoeRtvLoifUW9Qh7Luho7bmUPRkc\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"@openzeppelin/contracts/token/ERC20/IERC20.sol\";\n\n\ninterface IBancorNetworkPathFinder {\n\n    function generatePath(IERC20 sourceToken, IERC20 targetToken)\n        external view returns(address[] memory);\n}",
+  "sourcePath": "/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IBancorNetworkPathFinder.sol",
+  "ast": {
+    "absolutePath": "/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IBancorNetworkPathFinder.sol",
+    "exportedSymbols": {
+      "IBancorNetworkPathFinder": [
+        3254
+      ]
+    },
+    "id": 3255,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3242,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:7"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "file": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "id": 3243,
+        "nodeType": "ImportDirective",
+        "scope": 3255,
+        "sourceUnit": 4092,
+        "src": "25:56:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 3254,
+        "linearizedBaseContracts": [
+          3254
+        ],
+        "name": "IBancorNetworkPathFinder",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3253,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "generatePath",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3248,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3245,
+                  "name": "sourceToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3253,
+                  "src": "148:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$4091",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3244,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 4091,
+                    "src": "148:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$4091",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3247,
+                  "name": "targetToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3253,
+                  "src": "168:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$4091",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3246,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 4091,
+                    "src": "168:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$4091",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "147:40:7"
+            },
+            "returnParameters": {
+              "id": 3252,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3251,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3253,
+                  "src": "218:16:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 3249,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "218:7:7",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 3250,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "218:9:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "217:18:7"
+            },
+            "scope": 3254,
+            "src": "126:110:7",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3255,
+        "src": "84:154:7"
+      }
+    ],
+    "src": "0:238:7"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/admin/Documents/GitHub/horizin/shadow/bank/dex-aggregator/contracts/interface/IBancorNetworkPathFinder.sol",
+    "exportedSymbols": {
+      "IBancorNetworkPathFinder": [
+        3254
+      ]
+    },
+    "id": 3255,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3242,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:7"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "file": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "id": 3243,
+        "nodeType": "ImportDirective",
+        "scope": 3255,
+        "sourceUnit": 4092,
+        "src": "25:56:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 3254,
+        "linearizedBaseContracts": [
+          3254
+        ],
+        "name": "IBancorNetworkPathFinder",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3253,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "generatePath",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3248,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3245,
+                  "name": "sourceToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3253,
+                  "src": "148:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$4091",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3244,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 4091,
+                    "src": "148:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$4091",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3247,
+                  "name": "targetToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3253,
+                  "src": "168:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$4091",
+                    "typeString": "contract IERC20"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3246,
+                    "name": "IERC20",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 4091,
+                    "src": "168:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$4091",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "147:40:7"
+            },
+            "returnParameters": {
+              "id": 3252,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3251,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3253,
+                  "src": "218:16:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 3249,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "218:7:7",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 3250,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "218:9:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "217:18:7"
+            },
+            "scope": 3254,
+            "src": "126:110:7",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3255,
+        "src": "84:154:7"
+      }
+    ],
+    "src": "0:238:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.14+commit.01f1aaa4.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-03-18T17:53:20.866Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -11,21 +11,29 @@ const FACTORY = "factory";
 
 /* --- Function --- */
 export const contractLoad = contracts => initialState => {
+  let contractNetwork = {};
   let contractLibrary = {};
+  let networkId;
 
   contracts.forEach(contract => {
+    /* @dev FIND A BETTER WAY TO DETECT CONTRACT STATUS
+     * Truffle and Embark compile smart contracts differently.
+     * It would be great to set a standard or create a library
+     * that unifies their format.
+     */
+    networkId = contract.networks ? Object.keys(contract.networks) : [];
     /* --- Standard JSON : Smart Contract JSON --- */
-    if (contract.networks) {
+    if (networkId.length > 0) {
       const networkId = Object.keys(contract.networks)[0];
       const address = contract.networks[networkId].address;
       const transactionHash = contract.networks[networkId].transactionHash;
 
-      contractLibrary[address] = {
+      contractNetwork[address] = {
         address: address,
         abi: contract.abi,
         bytecode: contract.bytecode,
         transactionHash: transactionHash,
-        name: contract.name,
+        name: contract.contractName || contract.name,
         type: DEPLOYED,
         network: {
           chainId: Number(networkId),
@@ -36,7 +44,7 @@ export const contractLoad = contracts => initialState => {
 
     /* --- Custom Input : Smart Contract --- */
     if (contract.network) {
-      contractLibrary[contract.address] = {
+      contractNetwork[contract.address] = {
         address: contract.address,
         abi: contract.abi,
         bytecode: contract.bytecode,
@@ -49,10 +57,11 @@ export const contractLoad = contracts => initialState => {
     }
 
     /* --- Factory : Smart Contract --- */
-    if (!contract.network && !contract.address && contract.id) {
-      contractLibrary[contract.id] = {
+    if (networkId.length === 0 && !contract.address && contract.contractName) {
+      contractLibrary[contract.contractName] = {
         abi: contract.abi,
         bytecode: contract.bytecode,
+        contractName: contract.contractName,
         type: FACTORY
       };
     }
@@ -61,6 +70,9 @@ export const contractLoad = contracts => initialState => {
   return {
     ...initialState,
     contracts: {
+      ...contractNetwork
+    },
+    library: {
       ...contractLibrary
     }
   };

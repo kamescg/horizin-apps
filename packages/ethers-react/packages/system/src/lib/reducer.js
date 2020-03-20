@@ -13,15 +13,6 @@ import {
   SET_ADDRESS
 } from "./types";
 
-import {
-  CONTRACT_DEPLOY_SUBMITTED,
-  CONTRACT_DEPLOY_COMPLETE,
-  CONTRACT_DEPLOY_REJECTED,
-  TRANSACTION_SUBMITTED,
-  TRANSACTION_COMPLETE,
-  TRANSACTION_REJECTED
-} from "./status";
-
 const reducerActions = (state, action) => {
   const { id, payload, type } = action;
   switch (type) {
@@ -60,6 +51,18 @@ const reducerActions = (state, action) => {
     /* ----------------------- */
     /* Contract Initialize     */
     /* ----------------------- */
+
+    case "CONTRACT_INIT_FROM_LIBRARY":
+      return {
+        ...state,
+        contracts: {
+          ...state.contracts,
+          [action.id]: {
+            address: action.id,
+            api: payload
+          }
+        }
+      };
 
     case CONTRACT_INITIALIZE_SUCCESS:
       return {

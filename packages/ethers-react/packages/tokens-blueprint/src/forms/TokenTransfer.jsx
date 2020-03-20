@@ -28,7 +28,6 @@ export const TokenTransfer = ({ contractName, ...props }) => {
   /* --- Error : Effect --- */
   useEffect(() => {
     if (Number(process.env.REACT_APP_ETHERS_SYSTEM_DEBUG) === 1) {
-      console.log(contractTransaction, "contractTransaction TokenTransfer");
     }
   }, [contractTransaction]);
 

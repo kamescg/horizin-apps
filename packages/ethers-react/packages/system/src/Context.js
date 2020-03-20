@@ -13,7 +13,8 @@ const Context = createContext({
   // nonce: undefined,
   // provider: undefined,
   // wallet: undefined,
-  contracts: {}
+  contracts: {},
+  library: {}
 });
 
 export default Context;

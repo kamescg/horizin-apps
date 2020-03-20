@@ -1,6 +1,6 @@
 /**
- * @function useWalletSendTransaction
- * @description Dispatch, Broadcast and Confirm Ethereum tranasctions.
+ * @function useContractRead
+ * @description Read from a deployed smart contract.
  */
 
 /* --- Global --- */
@@ -8,18 +8,13 @@ import { useState, useEffect } from "react";
 import { selectors } from "@ethers-react/system";
 
 /* --- useContractRead : Effect --- */
-export const useContractRead = contractName => {
+export const useContractRead = selector => {
   /* ------------------- */
   // State
   /* ------------------- */
-  const [contractNamePassed, setContractNamePassed] = useState(contractName);
-
-  /* --- Global : State --- */
 
   /* --- Local : State --- */
-  const contractSelector = selectors.useSelectContractByName(
-    contractNamePassed
-  );
+  const contractSelector = selectors.useSelectContract(selector);
 
   /* --- Contract : States --- */
   const [contractFunction, setContractFunction] = useState();
@@ -52,15 +47,6 @@ export const useContractRead = contractName => {
     setContractFunction(func);
     if (contractName) setContractNamePassed(contractName);
   };
-
-  const setContractName = contractName => {
-    setContractNamePassed(contractName);
-  };
-
-  useEffect(() => {
-    // console.log(contractSelector, "read contractSelector");
-  }, [contractSelector]);
-
   /* ------------------- */
   // Effects
   /* ------------------- */
@@ -90,12 +76,15 @@ export const useContractRead = contractName => {
 
   return {
     read,
-    setContractName,
     input: contractInput,
     data: contractReadData,
     err: transactionBroadcastError,
     isRead: isContractReadData,
     isError: isContractReadData ? true : false,
-    isContractReadData
+    isContractReadData,
+
+    // State from Contract Selector
+    isContractConnected: contractSelector.isConnected,
+    isContractFound: contractSelector.isFound
   };
 };

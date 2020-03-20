@@ -1,0 +1,33 @@
+{
+  "name": "bank-safe",
+  "description": "Interface components to manage Gnosis Safe contracts",
+  "version": "0.0.0",
+  "author": "Kames <kames@horizin.io>",
+  "license": "MIT",
+  "keywords": [
+    "ethereum",
+    "ethers",
+    "web3",
+    "react",
+    "react-hooks",
+    "hooks"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/horizin/bank-safe.git"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "publish:lerna": "lerna publish",
+    "clean": "lerna clean --yes && lerna exec -- rm -rf dist/ .rts2_cache_{cjs,esm}/",
+    "build": "lerna run build",
+    "start": "lerna run --parallel --no-bail start -- --noClean",
+    "lint": "lerna run lint --parallel",
+    "test": "lerna run test --parallel"
+  },
+  "devDependencies": {
+    "lerna": "^3.16.4",
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
+  }
+}

@@ -1,2 +1,2 @@
 export { enableRequest } from "./commonEnableRequest";
-// export { contractDeployRequest } from "./contractDeployRequest";
+export { contractAddToStore } from "./contractAddToStore";

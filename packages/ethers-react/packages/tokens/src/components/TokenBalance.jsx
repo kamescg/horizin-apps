@@ -1,6 +1,6 @@
 /* --- Global --- */
 import { useEffect, useState } from "react";
-import { hooks, selectors } from "@ethers-react/system";
+import { hooks, utils } from "@ethers-react/system";
 
 /* --- TokenBalance : Component --- */
 export const TokenBalance = ({ address, contractName, ...props }) => {
@@ -28,7 +28,8 @@ export const TokenBalance = ({ address, contractName, ...props }) => {
   }, [address]);
 
   useEffect(() => {
-    if (contractRead.data) setBalance(contractRead.data.toString());
+    if (contractRead.data)
+      setBalance(utils.formatEther(contractRead.data.toString()));
   }, [contractRead]);
 
   useEffect(() => {});

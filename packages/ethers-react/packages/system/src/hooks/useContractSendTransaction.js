@@ -14,12 +14,13 @@ const LIFECYLE_TRANSACTION_BROADCAST = "LIFECYLE_TRANSACTION_BROADCAST";
 const LIFECYLE_TRANSACTION_SUCCESS = "LIFECYLE_TRANSACTION_SUCCESS";
 const LIFECYLE_TRANSACTION_FAILURE = "LIFECYLE_TRANSACTION_FAILURE";
 /* --- Effect --- */
-export const useContractSendTransaction = contractName => {
+export const useContractSendTransaction = selector => {
   /* ------------------- */
   // Reducer & State
   /* ------------------- */
   /* --- Global : State --- */
   const ethersProvider = withEthers();
+  const contractSelector = selectors.useSelectContract(selector);
 
   /* --- Local : State --- */
   const initialState = {
@@ -118,8 +119,6 @@ export const useContractSendTransaction = contractName => {
   /* ------------------- */
   // Hooks
   /* ------------------- */
-  /* --- contractSelector : Hook --- */
-  const contractSelector = selectors.useSelectContractByName(contractName);
 
   /* ------------------- */
   // Actions

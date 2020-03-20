@@ -1,17 +1,10 @@
 /* --- Global --- */
-import {withEthers} from '@ethers-react/system';
-import {
-  TokenBalance,
-  TokenTransfer,
-  TokenApprove,
-  TokenAllowance,
-  TokenTransferFrom,
-} from '@ethers-react/tokens';
+import {ProxyDeploy} from '@bank-safe/ui-proxy-factory';
 
 /* --- Local --- */
 
-/* --- TokensScreen : Screen --- */
-const TokensScreen = props => {
+/* --- BankScreen : Screen --- */
+const BankScreen = props => {
   return (
     <Atom.Box>
       <Main />
@@ -22,107 +15,35 @@ const TokensScreen = props => {
 const Main = props => {
   return (
     <Atom.Box sx={{}}>
-      <TokenTransferDemo />
+      <ProxyDeployDemo />
       <Atom.HorizontalRule />
-      <TokenApproveDemo />
-      <Atom.HorizontalRule />
-      <TokenAllowanceDemo />
-      <Atom.HorizontalRule />
-      <TokenTransferFromDemo />
     </Atom.Box>
   );
 };
 
-const TokenTransferDemo = props => {
-  const ethers = withEthers();
+const ProxyDeployDemo = props => {
   return (
     <Atom.Flex>
       <Atom.Box sx={{flex: 1, p: 4}}>
-        <Atom.Heading sx={{fontSize: [3, 3, 4]}}>Token Transfer</Atom.Heading>
+        <Atom.Heading sx={{fontSize: [3, 3, 4]}}>Deploy Proxy</Atom.Heading>
         <Atom.Paragraph sm>
-          Nam mattis commodo nunc vel hendrerit. Sed rhoncus lobortis semper.
-          Donec in tellus eu enim semper ornare eget et felis. Etiam eu justo
-          tincidunt, sollicitudin libero a, pellentesque odio.
+          Deploy a new Gnosis Safe Proxy smart contract.
         </Atom.Paragraph>
-        <TokenBalance contractName="MeshDevCoin" address={ethers.address} />
+        <Atom.Paragraph sm>
+          The deployed contract will use a proxy contract to manage
+          functionality. For example the current contracts are set to v1.1.1 and
+          in the future can be updated.
+        </Atom.Paragraph>
       </Atom.Box>
       <Atom.Flex center column sx={{bg: 'smoke', flex: 1, p: 4}}>
-        <TokenTransfer
-          contractName="MeshDevCoin"
-          valueAddress="0x5AdB8209b5276A23426994298FE9900644F57924"
-          valueAmount="1"
+        <ProxyDeploy
+          contractName="GnosisSafeProxyFactory"
+          valueAddress="0x1799604a9395431dC34da2019439750Ae6240C43"
+          valueData="1"
         />
       </Atom.Flex>
     </Atom.Flex>
   );
 };
 
-const TokenApproveDemo = props => {
-  return (
-    <Atom.Flex>
-      <Atom.Box sx={{flex: 1, p: 4}}>
-        <Atom.Heading sx={{fontSize: [3, 3, 4]}}>Token Approve</Atom.Heading>
-        <Atom.Paragraph sm>
-          Nam mattis commodo nunc vel hendrerit. Sed rhoncus lobortis semper.
-          Donec in tellus eu enim semper ornare eget et felis. Etiam eu justo
-          tincidunt, sollicitudin libero a, pellentesque odio.
-        </Atom.Paragraph>
-      </Atom.Box>
-      <Atom.Flex center column sx={{bg: 'smoke', flex: 1, p: 4}}>
-        <TokenApprove
-          contractName="MeshDevCoin"
-          valueAddress="0x5AdB8209b5276A23426994298FE9900644F57924"
-          valueAmount="1"
-        />
-      </Atom.Flex>
-    </Atom.Flex>
-  );
-};
-
-const TokenAllowanceDemo = props => {
-  return (
-    <Atom.Flex>
-      <Atom.Box sx={{flex: 1, p: 4}}>
-        <Atom.Heading sx={{fontSize: [3, 3, 4]}}>Token Allowance</Atom.Heading>
-        <Atom.Paragraph sm>
-          Nam mattis commodo nunc vel hendrerit. Sed rhoncus lobortis semper.
-          Donec in tellus eu enim semper ornare eget et felis. Etiam eu justo
-          tincidunt, sollicitudin libero a, pellentesque odio.
-        </Atom.Paragraph>
-      </Atom.Box>
-      <Atom.Flex center column sx={{bg: 'smoke', flex: 1, p: 4}}>
-        <TokenAllowance
-          contractName="MeshDevCoin"
-          valueAddressOwner="0x5AdB8209b5276A23426994298FE9900644F57924"
-          valueAmount="1"
-        />
-      </Atom.Flex>
-    </Atom.Flex>
-  );
-};
-
-const TokenTransferFromDemo = props => {
-  return (
-    <Atom.Flex>
-      <Atom.Box sx={{flex: 1, p: 4}}>
-        <Atom.Heading sx={{fontSize: [3, 3, 4]}}>
-          Token Transfer from Approved
-        </Atom.Heading>
-        <Atom.Paragraph sm>
-          Nam mattis commodo nunc vel hendrerit. Sed rhoncus lobortis semper.
-          Donec in tellus eu enim semper ornare eget et felis. Etiam eu justo
-          tincidunt, sollicitudin libero a, pellentesque odio.
-        </Atom.Paragraph>
-      </Atom.Box>
-      <Atom.Flex center column sx={{bg: 'smoke', flex: 1, p: 4}}>
-        <TokenTransferFrom
-          contractName="MeshDevCoin"
-          valueAddressOwner="0x5AdB8209b5276A23426994298FE9900644F57924"
-          valueAmount="1"
-        />
-      </Atom.Flex>
-    </Atom.Flex>
-  );
-};
-
-export default TokensScreen;
+export default BankScreen;
