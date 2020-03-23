@@ -5,7 +5,7 @@
  */
 
 /* --- Global --- */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { hooks, utils, withEthers } from "@ethers-react/system";
 import { useTransactionToast } from "@ethers-react/ui-blueprint";
@@ -13,7 +13,7 @@ import { useTransactionToast } from "@ethers-react/ui-blueprint";
 /* --- Module --- */
 import { generateSignatureFromOwner } from "../lib/helpers";
 
-import { execTx } from "./formDefaultValues";
+import { execTx } from "../lib/txDefaultValues";
 
 /* --- FormSafeSendTransaction : Component --- */
 export const FormSafeSendTransaction = ({ address, ...props }) => {

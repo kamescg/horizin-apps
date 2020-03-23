@@ -4,12 +4,11 @@
  */
 /* --- Global --- */
 import {
-  Address,
   BlockCurrent,
   NetworkID,
   NetworkName,
-  ProviderSelect,
   WalletBalance,
+  WalletProviderSelect,
 } from '@ethers-react/ui';
 /* --- Local --- */
 
@@ -32,7 +31,7 @@ export default props => (
 
     {/* Right */}
     <Atom.Flex alignCenter sx={{py: 2}}>
-      <ProviderSelect />
+      <WalletProviderSelect />
     </Atom.Flex>
   </Atom.Flex>
 );

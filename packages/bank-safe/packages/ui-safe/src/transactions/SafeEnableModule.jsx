@@ -15,19 +15,13 @@ import { generateSignatureFromOwner } from "../lib/helpers";
 import { execTx } from "../lib/txDefaultValues";
 
 /* --- SafeEnableModule : Component --- */
-export const SafeEnableModule = ({
-  address,
-  moduleAddress,
-  children,
-  ...props
-}) => {
+export const SafeEnableModule = ({ address, moduleAddress, children }) => {
   /* ------------------- */
   // State
   /* ------------------- */
   const ethersProvider = withEthers();
   const [initTx, setInitTx] = useState(false);
   const [data, setData] = useState(undefined);
-  const resetTransaction = () => setInitTx(initTx);
   /* ------------------- */
   // Hooks
   /* ------------------- */

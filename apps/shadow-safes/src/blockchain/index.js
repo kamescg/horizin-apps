@@ -6,12 +6,14 @@ import {extension as Global} from '@ethers-react/Global';
 /* --- Local --- */
 import GnosisSafe from '@contracts/GnosisSafe.json';
 import GnosisSafeProxyFactory from '@contracts/GnosisSafeProxyFactory.json';
+import DailyLimitModule from '@contracts/DailyLimitModule.json';
 
 /* --- Module --- */
 import {web3Modal} from './web3modal';
 
 /* --- Contracts --- */
 export const contracts = [
+  DailyLimitModule,
   GnosisSafe,
   GnosisSafeProxyFactory,
   {

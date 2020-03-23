@@ -1,12 +1,14 @@
 /* --- Global --- */
 import { useEffect, useState } from "react";
-import { withEthers } from "@ethers-react/system";
+import { withEthers, utils } from "@ethers-react/system";
 
 /* --- Effect --- */
-export const useBalanceChange = drs => {
+export const useBalanceChange = adrs => {
   const ethers = withEthers();
   const [address, setAddress] = useState(adrs);
   const [balance, setBalance] = useState({});
+
+  console.log(adrs, "adrsadrs");
 
   /* --- Block Mind : Listen Event --- */
   useEffect(() => {
@@ -15,10 +17,8 @@ export const useBalanceChange = drs => {
         setBalance({
           number: balanceBigNumber,
           wei: balanceBigNumber.toString(),
-          eth: ethers.instance.utils.formatEther(balanceBigNumber),
-          trimmed: ethers.instance.utils
-            .formatEther(balanceBigNumber)
-            .substring(0, 5)
+          eth: utils.formatEther(balanceBigNumber),
+          trimmed: utils.formatEther(balanceBigNumber).substring(0, 5)
         })
       );
     }
@@ -29,9 +29,5 @@ export const useBalanceChange = drs => {
     };
   }, [ethers.provider]);
 
-  return {
-    address,
-    balance,
-    setAddress
-  };
+  return balance;
 };

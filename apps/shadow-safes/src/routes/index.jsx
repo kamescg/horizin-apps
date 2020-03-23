@@ -10,7 +10,7 @@ const DashboardPage = props => (
     <Router width="100%" primary={false}>
       <Activity path="/" />
       <Bank path="/bank" />
-      <Safe path="/safe/:address" />
+      <Safe path="/safe/:address/*" />
       <Safes path="/safes" />
       <Contracts path="/contracts" />
       <Settings path="/settings" />

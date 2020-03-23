@@ -5,6 +5,7 @@ export { extension } from "./extension";
 /* --- Components --- */
 export * from "./components";
 export * from "./transactions";
+export * from "./modules/daily-limit";
 
 /* --- Forms --- */
 export {

@@ -58,7 +58,9 @@ export default {
     white: ['#FFF', '#fefefe'],
     // Colors
     blue: ['#46a7ec', '#282ede'],
-    green: ['#a1c900', '#00af4e'],
+    // green: ['#a1c900', '#00af4e'],
+    green: ['#0ba360', '#3cba92'],
+
     gray: ['#f4f4f4', '#FFF'],
     purple: ['#7d3eb4', '#e430ad'],
     red: ['#ef473a', '#cb2d3e'],

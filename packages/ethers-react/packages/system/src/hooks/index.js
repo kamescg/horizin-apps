@@ -8,6 +8,7 @@ export { useGetTransaction } from "./useGetTransaction";
 export { useGetTransactionReceipt } from "./useGetTransactionReceipt";
 export { useLibraryInitContract } from "./useLibraryInitContract";
 export { useTransactionWatch } from "./useTransactionWatch";
+export { useWalletBalanceChange } from "./useWalletBalanceChange";
 export { useWalletEstimateTransaction } from "./useWalletEstimateTransaction";
 export { useWalletSignTransaction } from "./useWalletSignTransaction";
 export { useWalletSendTransaction } from "./useWalletSendTransaction";

@@ -4,7 +4,7 @@ import { withEthers } from "@ethers-react/system";
 import { Span } from "@horizin/atoms";
 
 /* ---  Component --- */
-export const WalletBalance = ({ sx, trimmed }) => {
+export const WalletBalanceContext = ({ sx, trimmed }) => {
   const ethers = withEthers();
   return ethers.balance && ethers.balance.eth ? (
     <Span sx={sx}>{trimmed ? ethers.balance.trimmed : ethers.balance.eth}</Span>

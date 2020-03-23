@@ -7,7 +7,7 @@ import { Span } from "@horizin/atoms";
 import { Component } from "@horizin/ui-compose";
 
 /* ---  Component --- */
-export const ProviderSelect = props => {
+export const WalletProviderSelect = props => {
   const ethers = withEthers();
 
   const [disconnectedPassedProps, setDisconnectedPassedProps] = useState({
@@ -57,7 +57,7 @@ const AddressTag = props => {
 };
 
 /* ---  Configuration --- */
-ProviderSelect.defaultProps = {
+WalletProviderSelect.defaultProps = {
   disconnectedLabel: "Select Provider",
   loadingLabel: "Loading",
   connectedLabel: "Enabled",
@@ -91,7 +91,7 @@ ProviderSelect.defaultProps = {
   }
 };
 
-ProviderSelect.propTypes = {
+WalletProviderSelect.propTypes = {
   disconnectedLabel: PropTypes.string,
   loadingLabel: PropTypes.string,
   connectedLabel: PropTypes.string,
