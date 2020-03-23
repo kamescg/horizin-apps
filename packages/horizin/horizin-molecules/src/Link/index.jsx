@@ -1,14 +1,13 @@
 /** @jsx jsx */
-import {jsx} from 'theme-ui';
-import {Link} from '@reach/router';
+import { jsx } from "theme-ui";
+import { Link as ReachLink } from "@reach/router";
 
-export default ({sx, ...props}) => {
-
+export const Link = ({ sx, ...props }) => {
   return (
-    <Link
+    <ReachLink
       sx={{
         m: 0,
-        ...sx,
+        ...sx
       }}
       {...props}
     />

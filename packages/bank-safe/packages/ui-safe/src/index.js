@@ -3,14 +3,13 @@ export { hooks };
 export { extension } from "./extension";
 
 /* --- Components --- */
-export {
-  DrawerSafeSetup,
-  SafeVersion,
-  SafeProxyName,
-  SafeOwners,
-  SafeThreshold,
-  SafeSendTransaction
-} from "./components";
+export * from "./components";
+export * from "./transactions";
 
 /* --- Forms --- */
-export { SafeSetup, FormSafeSetup, FormSafeSendTransaction } from "./forms";
+export {
+  SafeSetup,
+  FormSafeSetup,
+  FormSafeSendTransaction,
+  FormSafeEnableModule
+} from "./forms";

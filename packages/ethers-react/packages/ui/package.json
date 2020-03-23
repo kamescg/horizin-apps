@@ -33,6 +33,7 @@
     "@styled-system/css": "^5.1.4",
     "@styled-system/should-forward-prop": "^5.1.4",
     "@styled-system/space": "^5.1.2",
+    "react-blockies": "^1.4.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-hook-form": "^4.6.2",
     "theme-ui": "^0.2.52"

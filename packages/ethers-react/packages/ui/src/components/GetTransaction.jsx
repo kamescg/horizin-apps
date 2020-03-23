@@ -11,6 +11,8 @@ export const GetTransaction = ({ tx, sx, ...props }) => {
     transaction.getTransaction(tx);
   }, [tx]);
 
+  console.log(transaction, "transaction");
+
   return !transaction.data ? (
     <Atom.Span tag>Retrieving Transaction Data</Atom.Span>
   ) : (

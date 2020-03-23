@@ -41,22 +41,10 @@ export const FormSafeSetup = ({ address, ...props }) => {
     toast.reset();
   };
 
-  /// @param _owners List of Safe owners.
-  /// @param _threshold Number of required confirmations for a Safe transaction.
-  /// @param to Contract address for optional delegate call.
-  /// @param data Data payload for optional delegate call.
-  /// @param fallbackHandler Handler for fallback calls to this contract
-  /// @param paymentToken Token that should be used for the payment (0 is ETH)
-  /// @param payment Value that should be paid
-  /// @param paymentReceiver Adddress that should receive the payment (or 0 if tx.origin)
-
   /* --- Error : Effect --- */
   useEffect(() => {
     if (Number(process.env.REACT_APP_ETHERS_SYSTEM_DEBUG) === 1) {
-      console.log(
-        contractTransaction,
-        "contractTransactioncontractTransaction"
-      );
+      console.log(contractTransaction, "FormSafeSetup");
     }
   }, [contractTransaction]);
 

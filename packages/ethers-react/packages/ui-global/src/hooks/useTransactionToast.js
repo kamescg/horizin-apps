@@ -74,9 +74,6 @@ export const useTransactionToast = tx => {
   /* ------------------- */
 
   useEffect(() => {
-    {
-      console.log(tx, "ConfirmingTransaction TXX");
-    }
     if (tx.isRequesting && !state.isRequesting) {
       dispatch({ type: "IS_REQUESTING" });
       ToastContainer.show({

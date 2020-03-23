@@ -1,7 +1,7 @@
 {
-  "name": "OneSplit",
+  "name": "horizin-token",
+  "description": "Manage the deploymne of fungible tokens and on-chain factory",
   "version": "0.0.1",
-  "description": "",
   "repository": {
     "type": "git",
     "url": "git@github.com:CryptoManiacsZone/1split.git"

@@ -162,6 +162,11 @@ export const useContractSendTransaction = selector => {
             state.contractFunction
           ](...state.contractCallValues, state.params);
 
+          console.log(
+            transactionBroadcast,
+            "transactionBroadcasttransactionBroadcast"
+          );
+
           dispatch({
             type: "SET_BROADCAST_CONFIRMED",
             payload: {
@@ -170,7 +175,7 @@ export const useContractSendTransaction = selector => {
             }
           });
         } catch (error) {
-          console.log(error);
+          console.log(error, "ERROR_SEND_TRANS");
           dispatch({
             type: "SET_BROADCAST_REJECTED",
             payload: {

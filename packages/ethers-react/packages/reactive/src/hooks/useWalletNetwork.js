@@ -5,7 +5,7 @@
 /* --- Global --- */
 import { useEffect } from "react";
 /* --- Local --- */
-import { NETWORK_SET } from "../types";
+import { SET_NETWORK } from "../types";
 
 /* --- Effect --- */
 export const useWalletNetwork = (state, dispatch) => {
@@ -20,7 +20,7 @@ export const useWalletNetwork = (state, dispatch) => {
           const network = await state.provider.getNetwork();
           dispatch({
             payload: network,
-            type: NETWORK_SET
+            type: SET_NETWORK
           });
         } catch (error) {}
       })();

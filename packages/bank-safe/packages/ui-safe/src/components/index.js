@@ -1,7 +1,10 @@
 export { DrawerSafeSetup } from "./DrawerSafeSetup";
+export { DrawerSafeSendTransaction } from "./DrawerSafeSendTransaction";
 export { ErrorMessage } from "./ErrorMessage";
+export { SafeModules } from "./SafeModules";
+export { SafeExecutionEvents } from "./SafeExecutionEvents";
 export { SafeThreshold } from "./SafeThreshold";
 export { SafeOwners } from "./SafeOwners";
-export { SafeVersion } from "./SafeVersion";
 export { SafeProxyName } from "./SafeProxyName";
-export { SafeSendTransaction } from "./SafeSendTransaction";
+export { SafeVersion } from "./SafeVersion";
+// export { SafeSendTransaction } from "./SafeSendTransaction";

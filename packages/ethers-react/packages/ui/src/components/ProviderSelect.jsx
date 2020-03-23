@@ -79,10 +79,14 @@ ProviderSelect.defaultProps = {
   },
   connectedProps: {
     trim: 6,
+    blockie: true,
     copy: true,
+    sxAddress: {
+      mx: 2
+    },
     attr: {
       // pointer: true,
-      tag: true
+      // tag: true
     }
   }
 };

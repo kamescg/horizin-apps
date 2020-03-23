@@ -21,7 +21,6 @@ export const SafeCreatedEvents = ({
   /* ------------------- */
   /* --- Select Contract : Effect --- */
   useEffect(() => {
-    setInit(true);
     contractRead.getEvents({ address, topic, eventName: eventName });
   }, [address]);
 

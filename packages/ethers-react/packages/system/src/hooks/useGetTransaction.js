@@ -30,8 +30,10 @@ export const useGetTransaction = txHash => {
       (async () => {
         try {
           const txData = await ethers.provider.getTransaction(transactionHash);
+          console.log(txData, "txData");
           setTransactionData(txData);
         } catch (error) {
+          console.log(error, "txData error");
           setError(error);
         }
       })();

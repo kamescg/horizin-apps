@@ -5,7 +5,7 @@ import { Match } from "@reach/router";
 
 /* --- Local Dependencies --- */
 import { Flex, Span, HorizontalRule, Heading } from "@horizin/atoms";
-import Link from "../Link";
+import { Link } from "../Link";
 
 /* --- Module --- */
 import { activateMenu } from "./helpers";
@@ -146,13 +146,21 @@ MenuItem.defaultProps = {
 };
 
 /* ------- Component ------- */
-export default ({ items, label, ...props }) => (
+export const Menu = ({
+  items,
+  direction,
+  label,
+  sxLabel,
+  sxMenu,
+  labelUnderline,
+  ...props
+}) => (
   <>
-    <LabelMenu label={label} />
+    <LabelMenu label={label} sx={sxLabel} labelUnderline={labelUnderline} />
     <Flex
       sx={{
-        ...props.sxMenu,
-        flexDirection: props.direction || "row"
+        ...sxMenu,
+        flexDirection: direction || "row"
       }}
     >
       {Array.isArray(items) &&
@@ -172,6 +180,17 @@ export default ({ items, label, ...props }) => (
   </>
 );
 
+const LabelMenu = ({ sx, labelUnderline, ...props }) => {
+  return props.label ? (
+    <>
+      <Heading as="h5" sm m0 sx={sx}>
+        {props.label}
+      </Heading>
+      {labelUnderline && <HorizontalRule sx={{ my: 1 }} />}
+    </>
+  ) : null;
+};
+
 const WrapperLink = ({ sx, to, children, ...props }) => (
   <Match path={`${to}`}>
     {props => (
@@ -181,14 +200,3 @@ const WrapperLink = ({ sx, to, children, ...props }) => (
     )}
   </Match>
 );
-
-const LabelMenu = props => {
-  return props.label ? (
-    <>
-      <Heading as="h5" noMargin>
-        {props.label}
-      </Heading>
-      <HorizontalRule sx={{ my: 2 }} />
-    </>
-  ) : null;
-};

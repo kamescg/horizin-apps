@@ -2,14 +2,9 @@ import {
   ENABLE_REQUEST,
   ENABLE_SUCCESS,
   ENABLE_FAILURE,
-  SET_PROVIDER,
-  SET_PROVIDER_MULTIPLE,
-  SET_PROVIDER_STATUS,
-  INIT_CONTRACT_REQUEST,
-  CONTRACT_INITIALIZE_SUCCESS,
-  BALANCE_SET,
-  NONCE_SET,
-  NETWORK_SET,
+  CONTRACT_INIT,
+  CONTRACT_INIT_WITH_WALLET,
+  SET_NETWORK,
   SET_ADDRESS
 } from "./types";
 
@@ -42,7 +37,7 @@ const reducerActions = (state, action) => {
         address: payload
       };
 
-    case NETWORK_SET:
+    case SET_NETWORK:
       return {
         ...state,
         network: payload
@@ -52,46 +47,28 @@ const reducerActions = (state, action) => {
     /* Contract Initialize     */
     /* ----------------------- */
 
-    case "CONTRACT_INIT_FROM_LIBRARY":
+    case CONTRACT_INIT:
       return {
         ...state,
         contracts: {
           ...state.contracts,
           [action.id]: {
             address: action.id,
-            api: payload
+            abi: payload.abi,
+            api: payload.api
           }
         }
       };
-
-    case CONTRACT_INITIALIZE_SUCCESS:
+    case CONTRACT_INIT_WITH_WALLET:
       return {
         ...state,
         contracts: {
           ...state.contracts,
           [action.id]: {
-            api: payload,
-            ...state.contracts[payload.address]
+            api: action.payload,
+            ...state.contracts[action.payload.address]
           },
           ...state.contacts
-        }
-      };
-
-    case INIT_CONTRACT_REQUEST:
-      const { address, contract } = payload;
-      return {
-        ...state,
-        store: {
-          ...state.store,
-          contracts: []
-        },
-        contracts: {
-          ...state.contracts,
-          [id]: {
-            id,
-            address,
-            ...contract
-          }
         }
       };
 

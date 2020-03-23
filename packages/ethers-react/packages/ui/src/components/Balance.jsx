@@ -1,21 +1,28 @@
 /* --- Global --- */
 import React, { useEffect, useState } from "react";
-import { hooks, withEthers } from "@ethers-react/system";
+import { withEthers, utils } from "@ethers-react/system";
 import { Span } from "@horizin/atoms";
 
-/* ---  Component --- */
+/* --- Module --- */
+import { BigNumberToString } from "./index";
+
+/* ---  Balance : Component --- */
 export const Balance = ({ address, sx, ...props }) => {
-  const account = hooks.useBalanceChange(address);
+  const ethers = withEthers();
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
-    if (address) account.setAddress(address);
-    return () => true;
-  }, [address]);
+    if (ethers.provider && address) {
+      ethers.provider
+        .getBalance(address)
+        .then(balance => setBalance(utils.formatEther(balance)))
+        .catch(err => console.log(err));
+    }
+  }, [ethers.provider, address]);
 
   return (
     <Span sx={sx} {...props}>
-      <strong>Live Balance:</strong>{" "}
-      {account.balance && account.balance.trimmed}
+      <strong>Balance:</strong> {balance}
     </Span>
   );
 };

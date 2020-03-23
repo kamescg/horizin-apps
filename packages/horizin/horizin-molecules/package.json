@@ -29,6 +29,8 @@
     "@styled-system/should-forward-prop": "^5.1.4",
     "@styled-system/space": "^5.1.2",
     "prism-react-renderer": "^1.0.2",
+    "react-slick": "^0.25.2",
+    "slick-carousel": "^1.8.1",
     "theme-ui": "^0.2.52"
   },
   "devDependencies": {

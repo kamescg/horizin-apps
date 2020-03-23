@@ -8,12 +8,12 @@ import { useReducer, useEffect } from "react";
 import { withEthers, selectors, utils } from "@ethers-react/system";
 
 /* --- useGetEvents : Effect --- */
-export const useGetEvents = contractName => {
+export const useGetEvents = selector => {
   /* ------------------- */
   // Reducer & State
   /* ------------------- */
   /* --- Global : State --- */
-  const contractSelector = selectors.useSelectContractByName(contractName);
+  const contractSelector = selectors.useSelectContract(selector);
 
   /* --- Local : State --- */
   const initialState = {

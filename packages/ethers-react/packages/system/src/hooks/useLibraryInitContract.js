@@ -64,11 +64,7 @@ export const useLibraryInitContract = ({ address, contractName }) => {
   useEffect(() => {
     if (ethersProvider.library && ethersProvider.wallet && state.address) {
       const contractSelected = Object.values(ethersProvider.library).filter(
-        contract => {
-          console.log(state.address, contract, "contractLibray");
-
-          return (contract.contractName = state.contractName);
-        }
+        contract => (contract.contractName = state.contractName)
       );
 
       if (contractSelected.length > 0) {
@@ -80,7 +76,8 @@ export const useLibraryInitContract = ({ address, contractName }) => {
 
         ethersProvider.contractAddToStore({
           address: state.address,
-          contract: contract
+          abi: contractSelected[0].abi,
+          api: contract
         });
       }
     }

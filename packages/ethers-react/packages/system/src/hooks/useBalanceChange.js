@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { withEthers } from "@ethers-react/system";
 
 /* --- Effect --- */
-export const useBalanceChange = (provider, adrs) => {
+export const useBalanceChange = drs => {
   const ethers = withEthers();
   const [address, setAddress] = useState(adrs);
   const [balance, setBalance] = useState({});

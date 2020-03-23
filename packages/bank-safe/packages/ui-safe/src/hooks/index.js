@@ -1,1 +1,1 @@
-export { useProviderSelect } from "./useProviderSelect";
+export { useGnosisSafeState } from "./useGnosisSafeState";

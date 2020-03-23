@@ -1,11 +1,8 @@
 import {
   PROVIDER_SET,
-  PROVIDER_SET_MULTIPLE,
-  PROVIDER_SET_STATUS,
   BALANCE_SET,
   NONCE_SET,
-  NETWORK_SET,
-  ENS_ADDRESS_SET,
+  SET_NETWORK,
   SET_ADDRESS,
   BLOCK_CURRENT_SET,
   SIGNER_GET_SUCCESS,
@@ -24,22 +21,11 @@ const reducerActions = (state, action) => {
         ...state,
         provider: action.payload
       };
-    case PROVIDER_SET_MULTIPLE:
-      return {
-        ...state,
-        providers: action.payload
-      };
-    case PROVIDER_SET_STATUS:
-      return {
-        ...state,
-        providerStatus: action.payload
-      };
     case SET_ADDRESS:
       return {
         ...state,
         address: action.payload
       };
-
     case BALANCE_SET:
       return {
         ...state,
@@ -50,15 +36,10 @@ const reducerActions = (state, action) => {
         ...state,
         nonce: action.payload
       };
-    case NETWORK_SET:
+    case SET_NETWORK:
       return {
         ...state,
         network: action.payload
-      };
-    case ENS_ADDRESS_SET:
-      return {
-        ...state,
-        ensAddress: action.payload
       };
 
     case SIGNER_GET_SUCCESS:

@@ -1,9 +1,15 @@
+import { CONTRACT_INIT } from "../lib/types";
+
 export const contractAddToStore = (state, dispatch) => ({
   address,
-  contract
+  abi,
+  api
 }) =>
   dispatch({
-    type: "CONTRACT_INIT_FROM_LIBRARY",
+    type: CONTRACT_INIT,
     id: address,
-    payload: contract
+    payload: {
+      abi,
+      api
+    }
   });

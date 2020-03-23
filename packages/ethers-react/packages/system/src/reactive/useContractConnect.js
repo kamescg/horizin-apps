@@ -8,17 +8,11 @@ import { useState, useEffect } from "react";
 import { ethers } from "@ethers-react/system";
 
 /* --- Local --- */
-import { CONTRACT_INITIALIZE_SUCCESS } from "../lib/types";
+import { CONTRACT_INIT_WITH_WALLET } from "../lib/types";
 
 /* --- Effect --- */
 export const useContractConnect = (state, dispatch) => {
-  const [, set] = useState();
-
   /* --- Error : State --- */
-  const [error, setError] = useState();
-
-  /* --- Initialize --- */
-  const init = () => {};
 
   /* --- Sign Message :: Effect --- */
   useEffect(() => {
@@ -36,13 +30,13 @@ export const useContractConnect = (state, dispatch) => {
                 state.wallet
               );
               dispatch({
-                payload: contract,
+                type: CONTRACT_INIT_WITH_WALLET,
                 id: state.contracts[contractId].address,
-                type: CONTRACT_INITIALIZE_SUCCESS
+                payload: contract
               });
             });
         } catch (error) {
-          setError(error);
+          // setError(error);
         }
       };
       runEffect();
@@ -50,8 +44,5 @@ export const useContractConnect = (state, dispatch) => {
   }, [state.wallet]);
 
   /* --- Return : Complete --- */
-  return {
-    init,
-    error: error
-  };
+  return true;
 };

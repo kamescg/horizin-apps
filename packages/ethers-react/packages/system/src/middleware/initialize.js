@@ -34,6 +34,7 @@ export const contractLoad = contracts => initialState => {
         bytecode: contract.bytecode,
         transactionHash: transactionHash,
         name: contract.contractName || contract.name,
+        contractName: contract.contractName || contract.name,
         type: DEPLOYED,
         network: {
           chainId: Number(networkId),

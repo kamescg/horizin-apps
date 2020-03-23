@@ -13,7 +13,7 @@ export const INIT_CONTRACT_FAILURE = "INIT_CONTRACT_FAILURE";
 
 export const BALANCE_SET = "BALANCE_SET";
 export const ENS_ADDRESS_SET = "ENS_ADDRESS_SET";
-export const NETWORK_SET = "NETWORK_SET";
+export const SET_NETWORK = "SET_NETWORK";
 export const NONCE_SET = "NONCE_SET";
 
 /* ----------------------- */

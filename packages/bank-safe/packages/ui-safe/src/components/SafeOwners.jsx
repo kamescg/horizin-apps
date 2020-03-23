@@ -18,10 +18,6 @@ export const SafeOwners = ({ address, ...props }) => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(contractRead, "contractRead OWNERS");
-  }, [contractRead]);
-
   return contractRead.err ? (
     <ErrorMessage label="Version:" msg={contractRead.err.reason} />
   ) : contractRead.data ? (

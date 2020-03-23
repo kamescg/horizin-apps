@@ -67,7 +67,7 @@ export const useSelectContract = selector => {
   /* --- Component : State --- */
 
   useEffect(() => {
-    if (ethers.contracts && !state.isConnected) {
+    if (ethers.contracts) {
       let contract;
       const isSelectorAddress = isAddress(selector);
       if (isSelectorAddress) {
@@ -76,10 +76,9 @@ export const useSelectContract = selector => {
         );
       } else {
         contract = Object.keys(ethers.contracts).filter(
-          contract => ethers.contracts[contract].selector === selector
+          contract => ethers.contracts[contract].contractName === selector
         );
       }
-
       if (contract.length > 0) {
         dispatch({
           type: "SET_CONTRACT",
@@ -103,10 +102,6 @@ export const useSelectContract = selector => {
       });
     }
   }, [state.contract]);
-
-  useEffect(() => {
-    console.log(state, "stateSELECTOR");
-  }, [state]);
 
   return {
     contract: state.contract,

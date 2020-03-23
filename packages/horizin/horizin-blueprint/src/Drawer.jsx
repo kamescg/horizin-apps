@@ -1,7 +1,7 @@
 /* --- Global --- */
 import React, {useState} from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import {Drawer as DrawerBlueprint} from '@blueprintjs/core';
+import {Drawer as DrawerBlueprint, Position} from '@blueprintjs/core';
 import {Span, Box} from '@horizin/atoms';
 import {Component} from '@horizin/ui-compose';
 /* --- Local --- */
@@ -24,7 +24,7 @@ export const Drawer = ({children, icon, title, size, ...props}) => {
         isOpen={isOpen}
         onClose={toggleDrawer}
         size={size || 400}
-        position={{right: 0}}>
+        position={Position.RIGHT}>
         <Box>
           <Box sx={{height: '100vh'}}>
             <PerfectScrollbar>
