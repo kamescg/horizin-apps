@@ -1,6 +1,6 @@
 {
-  "name": "shadow",
-  "description": "The Shadow Bank",
+  "name": "horizin-safes",
+  "description": "Horizin Gnosis Safe",
   "author": "Kames <kames@horizin.io>",
   "private": true,
   "license": "MIT",
