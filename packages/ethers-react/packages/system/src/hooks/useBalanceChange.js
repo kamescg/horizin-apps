@@ -3,12 +3,9 @@ import { useEffect, useState } from "react";
 import { withEthers, utils } from "@ethers-react/system";
 
 /* --- Effect --- */
-export const useBalanceChange = adrs => {
+export const useBalanceChange = address => {
   const ethers = withEthers();
-  const [address, setAddress] = useState(adrs);
   const [balance, setBalance] = useState({});
-
-  console.log(adrs, "adrsadrs");
 
   /* --- Block Mind : Listen Event --- */
   useEffect(() => {
@@ -27,7 +24,7 @@ export const useBalanceChange = adrs => {
         ethers.provider.removeListener(address);
       }
     };
-  }, [ethers.provider]);
+  }, [address, ethers.provider]);
 
   return balance;
 };

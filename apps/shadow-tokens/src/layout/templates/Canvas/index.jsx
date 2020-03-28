@@ -2,11 +2,8 @@ import {RegionTopCanvas, RegionFooterCanvas} from '@regions';
 
 const SiteTemplate = ({sx, sxMain, styled, children, ...props}) => {
   return (
-    <Atom.Box gradient="blue" sx={{variant: 'regions.canvas_container'}}>
-      <Atom.Flex
-        column
-        gradient="blue"
-        sx={{minHeight: '100vh', flex: 1, ...sx}}>
+    <Atom.Box sx={{variant: 'regions.canvas_container'}}>
+      <Atom.Flex column sx={{minHeight: '100vh', flex: 1, ...sx}}>
         <RegionTopCanvas />
         <Atom.Flex
           center

@@ -68,6 +68,8 @@ export default {
     navy: ['#0f0c29', '#302b63', '#24243e'],
     sunset: ['#ee0979', '#ff6a00'],
     frost: ['#000428', '#004e92'],
+    sherbert: ['#f79d00', '#64f38c'],
+    mild: ['#67B26F', '#4ca2cd'],
   },
   palette: {
     primary: {

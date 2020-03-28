@@ -1,31 +1,23 @@
 /* --- Global --- */
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { withEthers } from "@ethers-react/system";
+import { hooks, withEthers } from "@ethers-react/system";
 
 /* --- Component --- */
-export const TokenDeploy = props => {
+export const TokenDeploy = ({ contractName, ...props }) => {
   const { handleSubmit, register, errors } = useForm();
   const ethersProvider = withEthers();
 
+  const contract = hooks.useContractDeploy(contractName);
   const onSubmit = async values => {
-    try {
-      let contract = {
-        abi: props.contractAbi,
-        bytecode: props.contractBytecode
-      };
-      ethersProvider.contractDeployRequest({
-        contract,
-        inputs: [
-          values.name,
-          values.symbol,
-          values.decimals,
-          values.totalSupply
-        ]
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    contract.deploy({
+      inputs: [
+        values.name,
+        values.symbol,
+        values.decimals,
+        values.totalSupply,
+        ethersProvider.address
+      ]
+    });
   };
 
   return (

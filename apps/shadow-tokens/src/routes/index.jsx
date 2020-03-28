@@ -2,16 +2,15 @@
 import {Router} from '@reach/router';
 
 /* --- Local --- */
-import {Site} from '@templates';
-import {Activity, Home, Token} from '@screens';
+// import {Site} from '@templates';
+import Bank from './Bank';
+import Site from './Site';
 
 const DashboardPage = props => (
-  <Site>
-    <Router width="100%" primary={false} style={{width: ' 100%'}}>
-      <Home path="/" />
-      <Token path="/token/:address" />
-    </Router>
-  </Site>
+  <Router width="100%" primary={false} style={{width: ' 100%'}}>
+    <Bank path="/bank/*" />
+    <Site path="/*" />
+  </Router>
 );
 
 export default DashboardPage;

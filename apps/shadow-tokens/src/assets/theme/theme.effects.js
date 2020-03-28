@@ -55,6 +55,9 @@ export default {
       bg: 'neutral',
       color: 'text',
     },
+    widthFull: {
+      width: '100%',
+    },
     widthFill: {
       width: '100%',
     },

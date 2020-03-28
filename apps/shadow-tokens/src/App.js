@@ -15,10 +15,14 @@ import './assets/css/App.css';
 import './assets/css/blueprint.css';
 
 import Providers from './providers';
+import {WalletAutoConnect} from '@ethers-react/ui';
 
 /* --- Component --- */
 export default () => (
   <Providers>
-    <Routes />
+    <>
+      <Routes />
+      <WalletAutoConnect />
+    </>
   </Providers>
 );

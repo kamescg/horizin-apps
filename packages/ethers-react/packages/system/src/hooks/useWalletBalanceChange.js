@@ -17,7 +17,6 @@ export const useWalletBalanceChange = () => {
   useEffect(() => {
     if (ethers.provider && ethers.address) {
       ethers.provider.on(ethers.address, balanceBigNumber => {
-        console.log(balanceBigNumber, "balanceBigNumber");
         return setBalance({
           number: balanceBigNumber,
           wei: balanceBigNumber.toString(),
@@ -28,7 +27,7 @@ export const useWalletBalanceChange = () => {
     }
     return () => {
       if (ethers.provider) {
-        ethers.provider.removeListener(address);
+        ethers.provider.removeListener(ethers.address);
       }
     };
   }, [ethers.provider, ethers.address]);

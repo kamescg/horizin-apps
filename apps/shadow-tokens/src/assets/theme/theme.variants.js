@@ -1,5 +1,15 @@
 export default {
   // Text
+  circle: {
+    borderRadius: 99999,
+  },
+  icon: {
+    borderRadius: 99999,
+    border: '2px solid',
+    borderColor: 'white',
+    boxShadow: 1,
+  },
+
   text: {
     heading: {
       fontFamily: 'heading',
@@ -12,8 +22,6 @@ export default {
     },
   },
 
-  
-
   // Tag
   tag: {
     primary: {
@@ -24,5 +32,15 @@ export default {
       color: 'text',
       bg: 'secondary',
     },
-  }
-}
+  },
+
+  form: {
+    button: {
+      mt: 2,
+      fontSize: [1, 1, 2],
+      px: [3, 3, 4],
+      py: [3],
+      // width: '100%',
+    },
+  },
+};

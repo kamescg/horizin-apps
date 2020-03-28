@@ -1,35 +1,21 @@
 /* --- Global --- */
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { withEthers } from "@ethers-react/system";
 
 /* --- Component --- */
-export const TokenDeploy = props => {
+export const TokenDeploy = ({ contractName }) => {
   const { handleSubmit, register, errors } = useForm();
-  const ethersProvider = withEthers();
 
+  const contract = hooks.useContractDeploy(contractName);
   const onSubmit = async values => {
-    try {
-      let contract = {
-        abi: props.contractAbi,
-        bytecode: props.contractBytecode
-      };
-      ethersProvider.contractDeployRequest({
-        contract,
-        inputs: [
-          values.name,
-          values.symbol,
-          values.decimals,
-          values.totalSupply
-        ]
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    contract.deploy({
+      inputs: [values.name, values.symbol, values.decimals, values.totalSupply]
+    });
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
+      yo
       <Molecule.Field
         name="name"
         label="Name"
@@ -64,7 +50,6 @@ export const TokenDeploy = props => {
         errors={errors}
         sx={styles.field}
       />
-
       <Atom.Button md rounded sx={styles.button}>
         {props.label}
       </Atom.Button>

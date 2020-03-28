@@ -1,69 +1,57 @@
 /**
- * @function useWalletSendTransaction
- * @description Dispatch, Broadcast and Confirm Ethereum tranasctions.
+ * @function useContractDeploy
+ * @version 0.0.0
+ * @description
  */
 
 /* --- Global --- */
 import { useEffect, useReducer } from "react";
-import { selectors } from "@ethers-react/system";
+import { selectors, ethers } from "@ethers-react/system";
 
 /* --- Module --- */
 import withEthers from "../withContext";
 
+/* --- Consntants --- */
 const LIFECYLE_TRANSACTION_BROADCAST = "LIFECYLE_TRANSACTION_BROADCAST";
 const LIFECYLE_TRANSACTION_SUCCESS = "LIFECYLE_TRANSACTION_SUCCESS";
 const LIFECYLE_TRANSACTION_FAILURE = "LIFECYLE_TRANSACTION_FAILURE";
+const INITIAL_STATE = {
+  lifecyle: undefined,
+  params: {},
+  hash: undefined,
+  broadcast: undefined,
+  receipt: undefined,
+  // Contract : States
+  contractNamePassed: undefined,
+  contractFunction: undefined,
+  inputs: undefined,
+  // Error : States
+  broadcastError: undefined,
+  confirmedError: undefined,
+  receiptStatus: undefined,
+  // Booleans : States
+  isRequesting: false,
+  isBroadcast: false,
+  isConfirmed: false,
+  isRejected: false
+};
+
 /* --- Effect --- */
-export const useContractSendTransaction = selector => {
+export const useContractDeploy = selector => {
   /* ------------------- */
   // Reducer & State
   /* ------------------- */
 
   /* --- Global : State --- */
   const ethersProvider = withEthers();
-  const contractSelector = selectors.useSelectContract(selector);
-
-  /* --- Local : State --- */
-  const initialState = {
-    lifecyle: undefined,
-    params: {},
-    hash: undefined,
-    broadcast: undefined,
-    receipt: undefined,
-    // Contract : States
-    contractNamePassed: undefined,
-    contractFunction: undefined,
-    contractCallValues: undefined,
-
-    // Error : States
-    broadcastError: undefined,
-    confirmedError: undefined,
-    receiptStatus: undefined,
-    // Booleans : States
-    isRequesting: false,
-    isBroadcast: false,
-    isConfirmed: false,
-    isRejected: false
-  };
+  const contractSelector = selectors.useSelectContractFromLibrary(selector);
 
   function reducer(state, action) {
     switch (action.type) {
-      case "SET_PARAMS":
+      case "INIT_CONTRACT_DEPLOY":
         return {
           ...state,
-          params: action.payload
-        };
-      case "SET_CONTRACT":
-        return {
-          ...state,
-          contractFunction: action.payload.contractFunction,
-          contractCallValues: action.payload.contractCallValues
-        };
-      case "SEND_TRANSACTION":
-        return {
-          ...state,
-          contractFunction: action.payload.contractFunction,
-          contractCallValues: action.payload.contractCallValues,
+          inputs: action.payload.inputs,
           hash: undefined,
           broadcastError: undefined,
           broadcastErrorCode: undefined,
@@ -75,7 +63,7 @@ export const useContractSendTransaction = selector => {
           params: action.payload.params,
           lifecyle: LIFECYLE_TRANSACTION_BROADCAST
         };
-      case "SET_BROADCAST_CONFIRMED":
+      case "BROADCAST_CONFIRMED":
         return {
           ...state,
           isRequesting: false,
@@ -83,7 +71,7 @@ export const useContractSendTransaction = selector => {
           hash: action.payload.hash,
           transaction: action.payload.transaction
         };
-      case "SET_BROADCAST_REJECTED":
+      case "BROADCAST_REJECTED":
         return {
           ...state,
           isRequesting: false,
@@ -91,7 +79,7 @@ export const useContractSendTransaction = selector => {
           broadcastError: action.payload.error,
           lifecyle: LIFECYLE_TRANSACTION_FAILURE
         };
-      case "SET_RECEIPT_SUCCESS":
+      case "TRANSACTION_SUCCESS":
         return {
           ...state,
           isRequesting: false,
@@ -106,36 +94,18 @@ export const useContractSendTransaction = selector => {
     }
   }
 
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  // Debugging
-  if (Number(process.env.REACT_APP_ETHERS_SYSTEM_DEBUG) === 1) {
-    // console.log(state, "Contract SEND");
-  }
-
-  /* ------------------- */
-  // Hooks
-  /* ------------------- */
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   /* ------------------- */
   // Actions
   /* ------------------- */
-  /* --- setContractName : Action --- */
-  const setContractName = contractName => {
+  /* --- deploy : Action --- */
+  const deploy = ({ inputs, contractName, params }) => {
     dispatch({
-      type: "SET_CONTRACT_NAME",
-      payload: contractName
-    });
-  };
-
-  /* --- sendTransaction : Action --- */
-  const sendTransaction = ({ func, inputs, contractName, params }) => {
-    dispatch({
-      type: "SEND_TRANSACTION",
+      type: "INIT_CONTRACT_DEPLOY",
       payload: {
         contractName: state.contractName ? state.contractName : contractName,
-        contractFunction: func,
-        contractCallValues: inputs,
+        inputs: inputs,
         params: params
       }
     });
@@ -146,19 +116,21 @@ export const useContractSendTransaction = selector => {
   /* ------------------- */
   /* --- Contract Send Transaction :: Effect --- */
   useEffect(() => {
-    if (
-      contractSelector.api &&
-      state.contractFunction &&
-      state.contractCallValues &&
-      !state.hash
-    ) {
+    if (contractSelector.isFound && state.inputs && !state.hash) {
       (async () => {
         try {
-          const transactionBroadcast = await contractSelector.api[
-            state.contractFunction
-          ](...state.contractCallValues, state.params);
+          const contract = new ethers.ContractFactory(
+            contractSelector.abi,
+            contractSelector.bytecode,
+            ethersProvider.wallet
+          );
+
+          const transactionBroadcast = await contract.deploy(
+            ...state.inputs,
+            state.params
+          );
           dispatch({
-            type: "SET_BROADCAST_CONFIRMED",
+            type: "BROADCAST_CONFIRMED",
             payload: {
               hash: transactionBroadcast.hash,
               transaction: transactionBroadcast
@@ -166,7 +138,7 @@ export const useContractSendTransaction = selector => {
           });
         } catch (error) {
           dispatch({
-            type: "SET_BROADCAST_REJECTED",
+            type: "BROADCAST_REJECTED",
             payload: {
               errorCode: error.code,
               error: error
@@ -175,7 +147,7 @@ export const useContractSendTransaction = selector => {
         }
       })();
     }
-  }, [contractSelector.api, state.contractFunction, state.contractCallValues]);
+  }, [contractSelector.api, state.contractFunction, state.inputs]);
 
   /* --- Wait for Transaction : Effect --- */
   useEffect(() => {
@@ -187,7 +159,7 @@ export const useContractSendTransaction = selector => {
           );
 
           dispatch({
-            type: "SET_RECEIPT_SUCCESS",
+            type: "TRANSACTION_SUCCESS",
             payload: {
               receipt: receipt,
               receiptStatus: receipt.status ? true : false
@@ -201,8 +173,7 @@ export const useContractSendTransaction = selector => {
   }, [state.isBroadcast, state.hash]);
 
   return {
-    sendTransaction,
-    setContractName,
+    deploy,
     lifecyle: state.lifecyle,
     hash: state.hash,
     broadcast: state.broadcast,
@@ -217,7 +188,6 @@ export const useContractSendTransaction = selector => {
     isRejected: state.isRejected,
     isRequesting: state.isRequesting,
     // State from Contract Selectr
-    isContractConnected: contractSelector.isConnected,
     isContractFound: contractSelector.isFound
   };
 };

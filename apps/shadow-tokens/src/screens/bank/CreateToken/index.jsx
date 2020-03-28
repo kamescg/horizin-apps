@@ -6,77 +6,72 @@
 
 /* --- Global --- */
 import {TokenATMCard} from '@ethers-react/tokens';
+import {TokenDeploy} from '@ethers-react/tokens';
+
 /* --- Local --- */
 import {CardFeature} from '@components';
-import {FormEmailSubscription} from '@forms';
+
 /* --- Screen : Component --- */
 const Screen = props => {
   return (
-    <Atom.Box sx={{width: '100%'}}>
+    <>
       <Showcase />
-      <Main />
-    </Atom.Box>
+    </>
   );
 };
 
 /* --- Showcase : Component --- */
 const Showcase = props => {
   return (
-    <Atom.Box gradient="mild" direction={45} sx={styleShowcase}>
-      {/* <Atom.BackgroundImage
+    <Atom.Flex sx={styleShowcase}>
+      <Atom.BackgroundImage
         src="https://s.gitcoin.co/static/v2/images/header-bg.png"
         sx={{opacity: 0.6}}
-      /> */}
-      <Atom.Container>
-        <Atom.Flex alignCenter>
-          <Atom.Box sx={{flex: 1, p: 4}}>
-            <Atom.Heading
-              heavy
-              as="h2"
-              sx={{
-                fontSize: [4, 4, 5],
-              }}>
-              <Atom.Span thin>Social</Atom.Span> Digital Currencies
-            </Atom.Heading>
-            <Atom.Heading
-              as="h2"
-              sx={{
-                fontSize: [1, 1, 2],
-              }}>
-              Grow your fanbase. <strong>Mint your personal token.</strong>
-            </Atom.Heading>
-            <Atom.Paragraph sm>
-              Curabitur placerat, risus in mollis auctor, purus nibh aliquet
-              erat, sed gravida augue ex sed purus. Phasellus nisi purus,
-              consectetur nec auctor at, pharetra sed magna. Etiam mollis
-              dapibus erat in dignissim.
-            </Atom.Paragraph>
-            <Atom.Flex>
-              <Molecule.Link to="/how-it-works" sx={{mr: 2}}>
-                <Atom.Button sm white>
-                  How It Works
-                </Atom.Button>
-              </Molecule.Link>
-              <Molecule.Link to="/auth/register" m1>
-                <Atom.Button sm green>
-                  Register Account
-                </Atom.Button>
-              </Molecule.Link>
-            </Atom.Flex>
-          </Atom.Box>
-          <Atom.Flex center column sx={{flex: 1, p: 4}}>
-            <TokenATMCard />
-          </Atom.Flex>
+      />
+
+      <Atom.Flex alignCenter sx={{height: '100%', width: '100%'}}>
+        {/* Left : Region : Start */}
+        <Atom.Flex
+          column
+          sx={{
+            bg: 'neutral',
+            color: 'text',
+            justifyContent: 'center',
+            flex: 3,
+            height: '100%',
+            p: 4,
+          }}>
+          <Atom.Heading
+            heavy
+            as="h2"
+            sx={{
+              fontSize: [4, 4, 5],
+            }}>
+            <Atom.Span thin>Social</Atom.Span> Token
+          </Atom.Heading>
+          <Atom.Paragraph sm>
+            Curabitur placerat, risus in mollis auctor, purus nibh aliquet erat,
+            sed gravida augue ex sed purus. Risen in mollis auctor, purus nibh
+            aliquet erat,
+          </Atom.Paragraph>
+          <TokenDeploy contractName="Token" />
         </Atom.Flex>
-      </Atom.Container>
-    </Atom.Box>
+        {/* Right : Region : Start */}
+        <Atom.Flex center column sx={{flex: 5, p: 4}}>
+          <TokenATMCard />
+        </Atom.Flex>
+        {/* Right : Region : End */}
+      </Atom.Flex>
+    </Atom.Flex>
   );
 };
 
 const styleShowcase = {
-  bg: 'blue',
+  // bg: 'blue',
   color: 'white',
-  py: [4, 4, 5, 6],
+  flex: 1,
+  // height: '100%',
+  // py: [4, 4, 5, 6],
   width: '100%',
 };
 

@@ -4,15 +4,13 @@
  */
 /* --- Global --- */
 import {
-  Address,
-  BlockCurrent,
   NetworkID,
   NetworkName,
   ProviderSelect,
   WalletBalance,
 } from '@ethers-react/ui';
 /* --- Local --- */
-import {ColorMode} from '@components';
+import {ColorMode, MenuAccount} from '@components';
 
 export default props => (
   <Atom.Flex alignCenter between sx={{variant: 'regions.header'}}>
@@ -24,22 +22,11 @@ export default props => (
       </Molecule.Link>
     </Atom.Flex>
     {/* Left */}
-    <Atom.Flex alignCenter>
-      <Atom.Span tag sm sx={{ml: 2}}>
-        <strong>Balance: </strong>
-        <WalletBalance trimmed={6} />
-      </Atom.Span>
-      <Atom.Span tag sm sx={{ml: 2}}>
-        <strong>Network:</strong> <NetworkName /> (<NetworkID />)
-      </Atom.Span>
-    </Atom.Flex>
 
     {/* Right */}
-    <Atom.Flex alignCenter sx={{py: 2}}>
-      <Atom.Box sx={{mx: 3}}>
-        <ColorMode />
-      </Atom.Box>
+    <Atom.Flex alignCenter sx={{px: 0}}>
       <ProviderSelect />
+      <MenuAccount sx={{ml: 3}} />
     </Atom.Flex>
   </Atom.Flex>
 );

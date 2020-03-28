@@ -2,11 +2,12 @@
  * @name RegionTopDashboard
  * @description Default top region for application.
  */
+import {WalletProviderSelect} from '@ethers-react/ui';
 /* --- Local --- */
-import {ColorMode} from '@components';
+import {MenuAccount} from '@components';
 
 export default props => (
-  <Atom.Flex alignCenter between sx={{variant: 'regions.canvasheader'}}>
+  <Atom.Flex alignCenter between sx={{variant: 'regions.canvas_header'}}>
     {/* Left */}
     <Atom.Flex alignCenter>
       <Molecule.Link to="/">
@@ -18,10 +19,8 @@ export default props => (
 
     {/* Right */}
     <Atom.Flex alignCenter>
-      <Molecule.Link to="/">
-        <Atom.Span>Dashboard</Atom.Span>
-      </Molecule.Link>
-      <ColorMode />
+      <WalletProviderSelect />
+      <MenuAccount sx={{ml: 3}} />
     </Atom.Flex>
   </Atom.Flex>
 );

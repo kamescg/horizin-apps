@@ -19,6 +19,7 @@
       "packages/bank/packages/*",
       "packages/bank-safe/packages/*",
       "packages/ethers-react/packages/*",
+      "packages/ethers-react-ui/*",
       "packages/horizin/*"
     ],
     "nohoist": [

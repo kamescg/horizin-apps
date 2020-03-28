@@ -1,18 +1,20 @@
-import base from './theme.base'
-import colors from './theme.colors'
-import components from './theme.components'
-import effects from './theme.effects'
-import images from './theme.images'
-import style from './theme.style'
-import shadows from './theme.shadows'
-import regions from './theme.regions'
-import text from './theme.text'
-import positioning from './theme.positioning'
+import base from './theme.base';
+import colors from './theme.colors';
+import components from './theme.components';
+import effects from './theme.effects';
+import images from './theme.images';
+import style from './theme.style';
+import shadows from './theme.shadows';
+import regions from './theme.regions';
+import text from './theme.text';
+import positioning from './theme.positioning';
+import variants from './theme.variants';
 
 export default {
   ...base,
   ...colors,
   ...components,
+  ...variants,
   styles: style,
   images: images,
   effects: effects,
@@ -21,11 +23,12 @@ export default {
   layout: positioning,
   text: text,
   // App style
-}
+};
 
 // example base theme from @theme-ui/presets
 const heading = {
-  fontFamily: "Roboto,-apple-system,BlinkMacSystemFont,'Segoe UI', Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif",
+  fontFamily:
+    "Roboto,-apple-system,BlinkMacSystemFont,'Segoe UI', Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif",
   lineHeight: 'normal',
   fontWeight: 'normal',
-}
+};
