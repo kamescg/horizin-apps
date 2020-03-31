@@ -1,13 +1,12 @@
 /* --- Global --- */
 import { useForm } from "react-hook-form";
-import { hooks, withEthers } from "@ethers-react/system";
+import { withEthers } from "@ethers-react/system";
 
 /* --- Component --- */
-export const TokenDeploy = ({ contractName, ...props }) => {
+export const TokenDeploy = ({ contract, ...props }) => {
   const { handleSubmit, register, errors } = useForm();
   const ethersProvider = withEthers();
 
-  const contract = hooks.useContractDeploy(contractName);
   const onSubmit = async values => {
     contract.deploy({
       inputs: [

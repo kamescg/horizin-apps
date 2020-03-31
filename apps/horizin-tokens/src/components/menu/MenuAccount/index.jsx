@@ -43,7 +43,7 @@ const Menu = props => {
             },
             {
               label: 'Token Manage',
-              to: '/bank/token/manage',
+              to: '/bank/tokens/manage',
             },
             {
               label: 'ATM Deposit',

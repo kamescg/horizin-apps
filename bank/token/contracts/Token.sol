@@ -29,10 +29,10 @@ contract Token is IERC20 {
         uint256 _initialSupply,
         address _issuer
     ) public {
+        uint256 supply = _initialSupply.mul(10 ** uint256(_decimals));
         name = _name;
         symbol = _symbol;
         decimals = _decimals;
-        uint256 supply = _initialSupply.mul(10 ** uint256(_decimals));
         _totalSupply = supply;
         _balances[_issuer] = supply;
     }

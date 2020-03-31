@@ -5,7 +5,6 @@ import { withEthers } from "@ethers-react/system";
 /* --- Component --- */
 export const TokenDeploy = ({ contractName }) => {
   const { handleSubmit, register, errors } = useForm();
-
   const contract = hooks.useContractDeploy(contractName);
   const onSubmit = async values => {
     contract.deploy({

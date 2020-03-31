@@ -307,6 +307,7 @@ module.exports = function(webpackEnv) {
         '@datastore': path.resolve(__dirname, '../src/graphql'),
         '@queries': path.resolve(__dirname, '../src/queries'),
         '@components': path.resolve(__dirname, '../src/components'),
+        '@containers': path.resolve(__dirname, '../src/containers'),
         '@forms': path.resolve(__dirname, '../src/components/forms'),
         '@views': path.resolve(__dirname, '../src/views'),
         '@screens': path.resolve(__dirname, '../src/screens'),

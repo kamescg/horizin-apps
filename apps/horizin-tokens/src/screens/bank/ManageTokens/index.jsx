@@ -6,10 +6,9 @@
 
 /* --- Global --- */
 import {TokenATMCard} from '@ethers-react/tokens';
-
 /* --- Local --- */
-import {FormSettings} from '@forms';
-
+// import {FormSettings} from '@forms';
+import {TokenCachedList} from '@containers';
 /* --- Screen : Component --- */
 const Screen = props => {
   return (
@@ -31,18 +30,18 @@ const Showcase = props => {
             bg: 'neutral',
             color: 'text',
             justifyContent: 'center',
-            flex: 3,
+            flex: 5,
             height: '100%',
             p: 4,
           }}>
           <Atom.Heading as="h3" sx={{fontSize: [3, 3, 4]}}>
-            Settings
+            Manage Tokens
           </Atom.Heading>
           <Atom.HorizontalRule sx={{mb: 3}} />
-          <FormSettings />
+          <TokenCachedList />
         </Atom.Flex>
         {/* Right : Region : Start */}
-        <Atom.Flex center column sx={{flex: 5, p: 4}}>
+        <Atom.Flex center column sx={{flex: 4, p: 4}}>
           <TokenATMCard />
         </Atom.Flex>
         {/* Right : Region : End */}

@@ -5,20 +5,20 @@ import {extension as Global} from '@ethers-react/Global';
 
 /* --- Local --- */
 import ATM from '@contracts/ATM.json';
+import Bank from '@contracts/Bank.json';
 import Token from '@contracts/Token.json';
-import Registry from '@contracts/Registry.json';
 
 /* --- Module --- */
 import {web3Modal} from './web3modal';
 
 /* --- Contracts --- */
 export const contracts = [
-  Registry,
-  {
-    abi: ATM.abi,
-    bytecode: ATM.bytecode,
-    contractName: 'ATM',
-  },
+  // Bank,
+  // {
+  //   abi: ATM.abi,
+  //   bytecode: ATM.bytecode,
+  //   contractName: 'ATM',
+  // },
   {
     abi: Token.abi,
     bytecode: Token.bytecode,

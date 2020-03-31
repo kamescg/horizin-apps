@@ -7,7 +7,8 @@
 import { useEffect, useReducer } from "react";
 import { selectors } from "@ethers-react/system";
 
-INITIAL_STATE = {
+const LIFECYLE_TRANSACTION_BROADCAST = "LIFECYLE_TRANSACTION_BROADCAST";
+const INITIAL_STATE = {
   contractFunction: undefined,
   inputs: undefined,
   data: undefined,
@@ -22,6 +23,8 @@ export const useContractRead = selector => {
 
   /* --- Local : State --- */
   const contractSelector = selectors.useSelectContract(selector);
+
+  console.log(contractSelector, "contractSelectorcontractSelector");
 
   function reducer(state, action) {
     switch (action.type) {
@@ -44,20 +47,21 @@ export const useContractRead = selector => {
           isRead: true,
           data: action.payload
         };
-      case "SET_BROADCAST_REJECTED":
+      case "CONTRACT_READ_FAILURE":
         return {
           ...state,
           isRequesting: false,
+          isError: true,
           broadcastErrorCode: action.payload.errorCode,
-          broadcastError: action.payload.error,
-          lifecyle: LIFECYLE_TRANSACTION_FAILURE
+          broadcastError: action.payload.error
+          // lifecyle: LIFECYLE_TRANSACTION_FAILURE
         };
       default:
         throw new Error();
     }
   }
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   /* ------------------- */
   // Actions
@@ -82,11 +86,11 @@ export const useContractRead = selector => {
       contractSelector.api &&
       state.contractFunction &&
       state.inputs &&
-      !isContractReadData
+      state.isRequesting
     ) {
       (async () => {
         try {
-          const data = await contractSelector.api[contractFunction](
+          const data = await contractSelector.api[state.contractFunction](
             ...state.inputs
           );
           dispatch({
@@ -96,21 +100,20 @@ export const useContractRead = selector => {
         } catch (error) {
           console.log(error);
           dispatch({
-            type: "CONTRACT_READS_FAILURE",
-            payload: data
+            type: "CONTRACT_READ_FAILURE",
+            payload: error
           });
         }
       })();
     }
-  }, [contractSelector.api, contractFunction, contractInput]);
+  }, [contractSelector.api, state.contractFunction, state.inputs]);
 
   return {
     read,
     input: state.inputs,
     data: state.data,
-    err: err,
-    isRead: isContractReadData,
-    isError: isContractReadData ? true : false,
+    err: state.err,
+    isError: state.err ? true : false,
 
     // State from Contract Selectors
     isContractConnected: contractSelector.isConnected,
